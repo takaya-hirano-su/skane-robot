@@ -219,7 +219,7 @@ print(packetHandler.write4ByteTxRx(portHandler, DXLALL_ID, ADDR_XH430_MIN_POSITI
 
 
 ##これで1番が動かせる??
-for _ in range(10):
+for _ in range(30):
     packetHandler.write1ByteTxRx(portHandler, DXL1_ID, ADDR_XH430_TORQUE_ENABLE, TORQUE_ENABLE)
     dxl_goal_position1 = DXL_MAXIMUM_POSITION_VALUE
     param_goal_position1 = [
@@ -237,6 +237,8 @@ for _ in range(10):
 
     groupSyncWrite.clearParam()
 
+    dxl_addparam_result = groupSyncRead.addParam(DXL1_ID)
+    dxl_comm_result = groupSyncRead.txRxPacket()
     dxl_present_position1 = groupSyncRead.getData(DXL1_ID,ADDR_XH430_PRESENT_POSITION,LEN_XH430_PRESENT_POSITION)
     print(dxl_present_position1)
     time.sleep(0.1)

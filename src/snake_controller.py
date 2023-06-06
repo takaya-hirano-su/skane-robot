@@ -247,8 +247,8 @@ class SnakeController():
                 #
                 is_goal=True #全部goalに達してたらOK
             time.sleep(0.01)
-            if count>1:
-                break
+            # if count>1:
+            #     break
 
         self.group_sync_write.clearParam() #パラメータのリセット
         print("loop count:",count)
